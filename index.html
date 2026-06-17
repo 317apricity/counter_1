@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>매추리 선임 카운터</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>매추리 선임 카운터</h1>
+    </header>
+
+    <section class="top-controls">
+        <div class="company-select">
+            <label>중대 선택</label>
+            <select id="companySelect">
+                <option value="1">1중대</option>
+                <option value="2">2중대</option>
+                <option value="3">3중대</option>
+                <option value="4">4중대</option>
+                <option value="5">5중대</option>
+                <option value="6">6중대</option>
+                <option value="7">7중대</option>
+                <option value="8">8중대</option>
+            </select>
+        </div>
+        <div class="next-person">
+            <strong>다음 대상 : </strong><span id="nextTarget">없음</span>
+        </div>
+    </section>
+
+    <section class="tabs">
+        <button class="tab active">인원 관리</button>
+        <button class="tab">배정 이력</button>
+        <button class="tab">통계</button>
+    </section>
+
+    <section class="bulk-add">
+        <h2>인원 일괄 등록</h2>
+        <textarea id="bulkNames" placeholder="한 줄에 한 명씩 입력하세요."></textarea>
+        <button id="bulkRegisterBtn">일괄 등록</button>
+    </section>
+
+    <section class="add-member">
+        <h2>개별 추가</h2>
+        <input type="text" id="memberName" placeholder="이름 입력">
+        <button id="addMemberBtn">인원 추가</button>
+    </section>
+
+    <section class="assignment">
+        <h2>배정</h2>
+        <input type="number" id="assignCount" min="1" value="1">
+        <button id="assignBtn">배정 시작</button>
+        <button id="shuffleBtn">무작위 배치</button>
+    </section>
+
+    <section class="table-section">
+        <table id="memberTable">
+            <thead>
+                <tr>
+                    <th>상태</th>
+                    <th>이름</th>
+                    <th>경고권</th>
+                    <th>패스권</th>
+                    <th>참여여부</th>
+                    <th>메모</th>
+                    <th>수정</th>
+                    <th>삭제</th>
+                </tr>
+            </thead>
+            <tbody id="memberTableBody">
+                </tbody>
+        </table>
+    </section>
+</div>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
