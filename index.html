@@ -33,42 +33,71 @@
     </section>
 
     <section class="tabs">
-        <button class="tab active">인원 관리</button>
-        <button class="tab">배정 이력</button>
-        <button class="tab">통계</button>
+        <button class="tab active" data-tab="manage">인원 관리</button>
+        <button class="tab" data-tab="assign">당번 배정</button>
+        <button class="tab" data-tab="history">배정 이력</button>
+        <button class="tab" data-tab="stats">통계</button>
     </section>
 
-    <section class="bulk-add">
-        <h2>인원 일괄 등록</h2>
-        <textarea id="bulkNames" placeholder="한 줄에 한 명씩 입력하세요."></textarea>
-        <button id="bulkRegisterBtn">일괄 등록</button>
-    </section>
+    <div id="tab-manage" class="tab-content">
+        <section class="bulk-add">
+            <h2>인원 일괄 등록</h2>
+            <textarea id="bulkNames" placeholder="한 줄에 한 명씩 입력하세요."></textarea>
+            <button id="bulkRegisterBtn">일괄 등록</button>
+        </section>
 
-    <section class="add-member">
-        <h2>개별 추가</h2>
-        <input type="text" id="memberName" placeholder="이름 입력">
-        <button id="addMemberBtn">인원 추가</button>
-    </section>
+        <section class="add-member">
+            <h2>개별 추가</h2>
+            <input type="text" id="memberName" placeholder="이름 입력">
+            <button id="addMemberBtn">인원 추가</button>
+        </section>
+    </div>
 
-    <section class="assignment">
-        <h2>배정</h2>
-        <input type="number" id="assignCount" min="1" value="1">
-        <button id="assignBtn">배정 시작</button>
-        <button id="shuffleBtn">무작위 배치</button>
-    </section>
+    <div id="tab-assign" class="tab-content" style="display: none;">
+        <section class="assignment">
+            <h2>배정 및 명단 정렬</h2>
+            <input type="number" id="assignCount" min="1" value="1" style="width: 60px;">
+            <button id="assignBtn" style="background: #d1e7dd; font-weight: bold;">배정 시작</button>
+            <button id="shuffleBtn">무작위 배치</button>
+            <button id="sortAscBtn" style="background: #e9edf3;">🔤 가나다순</button>
+            <button id="sortDescBtn" style="background: #e9edf3;">🔤 역순</button>
+        </section>
+    </div>
 
-    <section class="table-section">
+    <div id="tab-history" class="tab-content" style="display: none;">
+        <section class="assignment">
+            <h2>배정 이력 구역</h2>
+            <p style="color: #666;">추후 배정 히스토리 로그가 기록될 공간입니다.</p>
+        </section>
+    </div>
+
+    <div id="tab-stats" class="tab-content" style="display: none;">
+        <section class="assignment">
+            <h2>누적 통계 구역</h2>
+            <p style="color: #666;">대원별 누적 당번 횟수 및 통계가 표시될 공간입니다.</p>
+        </section>
+
+        <section class="assignment" style="border: 1px solid #f44336; background: #fff5f5;">
+            <h2 style="color: #d32f2f;">⚠️ 시스템 마스터 초기화</h2>
+            <p style="font-size: 12px; color: #666; margin-bottom: 10px;">전체 중대의 모든 명단, 기록, 통계가 영구 삭제되며 복구할 수 없습니다.</p>
+            <div style="display: flex; gap: 5px;">
+                <input type="password" id="resetPassword" placeholder="초기화 비밀번호 입력" style="flex: 1; border: 1px solid #f44336;">
+                <button id="masterResetBtn" style="background: #d32f2f; color: white; border: none; font-weight: bold; padding: 8px 15px;">전체 초기화</button>
+            </div>
+        </section>
+    </div>
+
+    <section class="table-section" style="margin-top: 15px;">
         <table id="memberTable">
             <thead>
                 <tr>
-                    <th>상태</th>
                     <th>이름</th>
                     <th>경고권</th>
                     <th>패스권</th>
-                    <th>참여여부</th>
-                    <th>메모</th>
                     <th>수정</th>
                     <th>삭제</th>
+                    <th>참여여부 선택</th>
+                    <th>메모</th>
                 </tr>
             </thead>
             <tbody id="memberTableBody">
