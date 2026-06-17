@@ -13,7 +13,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-// 🚀 보안 프로그램의 차단을 우회하기 위해 롱폴링 통신을 강제 설정합니다.
+// 보안 차단망 우회를 위해 HTTP 롱폴링 강제 적용
 const db = initializeFirestore(app, {
     experimentalForceLongPolling: true,
     useFetchStreams: false
